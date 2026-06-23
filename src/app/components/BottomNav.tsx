@@ -5,8 +5,8 @@ export type TabKey = "inicio" | "menu" | "vegano" | "sintagg" | "tickets" | "map
 const tabs: { key: TabKey; icon: React.FC<{ size?: number; color?: string }>; label: string }[] = [
   { key: "inicio", icon: Home, label: "Inicio" },
   { key: "menu", icon: UtensilsCrossed, label: "Menú" },
-  { key: "vegano", icon: Leaf, label: "Vegano" },
-  { key: "sintagg", icon: ShieldCheck, label: "Sin TACC" },
+  
+
   { key: "tickets", icon: Ticket, label: "Tickets" },
   { key: "mapa", icon: Map, label: "Mapa" },
 ];
