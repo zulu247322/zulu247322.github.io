@@ -158,14 +158,14 @@ export function TicketsScreen() {
                 className="flex items-center gap-2 bg-white text-[#6b1a1a] px-4 py-2 rounded-xl font-medium text-sm hover:bg-[#f5e8e8] transition"
               >
                 <QrCode size={16} />
-                Pagar con QR
+                Seleccionar método de pago
               </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* QR Modal */}
+      {/* Payment Modal */}
       <AnimatePresence>
         {showQR && (
           <motion.div
@@ -184,7 +184,7 @@ export function TicketsScreen() {
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-5">
-                <h3 className="text-[#6b1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>Pagar con QR</h3>
+                <h3 className="text-[#6b1a1a]" style={{ fontFamily: "'Playfair Display', serif" }}>Elegí tu pago</h3>
                 <button onClick={() => setShowQR(false)} className="w-8 h-8 rounded-full bg-[#f5e8e8] flex items-center justify-center">
                   <X size={16} color="#6b1a1a" />
                 </button>
@@ -200,41 +200,22 @@ export function TicketsScreen() {
                 ))}
               </div>
 
-              {/* QR code placeholder */}
-              <div className="flex flex-col items-center mb-5">
-                <div className="w-48 h-48 border-2 border-[#6b1a1a]/20 rounded-2xl flex items-center justify-center bg-white p-3">
-                  {/* SVG QR mock */}
-                  <svg viewBox="0 0 100 100" className="w-full h-full">
-                    {/* QR pattern mock */}
-                    {[0,1,2,3,4,5,6].map(row =>
-                      [0,1,2,3,4,5,6].map(col => {
-                        const isCorner = (row < 2 && col < 2) || (row < 2 && col > 4) || (row > 4 && col < 2);
-                        const isData = (row + col + row * col) % 3 === 0 && !isCorner;
-                        return (
-                          <rect
-                            key={`${row}-${col}`}
-                            x={col * 14 + 1}
-                            y={row * 14 + 1}
-                            width={12}
-                            height={12}
-                            rx={1}
-                            fill={isCorner || isData ? "#6b1a1a" : "transparent"}
-                          />
-                        );
-                      })
-                    )}
-                    <text x="50" y="95" textAnchor="middle" fontSize="6" fill="#8a5a5a">UNLP Comedor</text>
-                  </svg>
-                </div>
-                <p className="text-[#8a5a5a] text-xs mt-2 text-center">Escaneá este código en la caja del comedor</p>
+              <div className="flex flex-col gap-3 mb-5">
+                <button
+                  onClick={handlePurchase}
+                  className="w-full bg-[#ffce00] text-[#1f1f1f] py-3.5 rounded-xl font-medium hover:bg-[#ffd83f] transition active:scale-95"
+                >
+                  Pagar con Mercado Pago
+                </button>
+                <button
+                  onClick={handlePurchase}
+                  className="w-full bg-[#3a8dff] text-white py-3.5 rounded-xl font-medium hover:bg-[#5ea0ff] transition active:scale-95"
+                >
+                  Pagar con Cuenta DNI
+                </button>
               </div>
 
-              <button
-                onClick={handlePurchase}
-                className="w-full bg-[#6b1a1a] text-white py-3.5 rounded-xl font-medium hover:bg-[#8b2020] transition active:scale-95"
-              >
-                Confirmar compra
-              </button>
+              <p className="text-[#8a5a5a] text-xs text-center">Al seleccionar un método, se completará la compra y recibirás el ticket.</p>
             </motion.div>
           </motion.div>
         )}
