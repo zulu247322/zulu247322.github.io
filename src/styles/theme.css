@@ -119,18 +119,25 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif !important;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif !important;
   }
 
-  h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+  h1, h2, h3, h4, p, span, button, input, textarea, label, div, li, a, small, strong, em {
+    font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif !important;
+  }
+
+  [style*="Playfair Display"], [style*="Open Sans"] {
+    font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif !important;
   }
 
   /**

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, UtensilsCrossed, Leaf, WheatOff } from "lucide-react";
 
 const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 
@@ -34,10 +34,10 @@ const menuData: Record<MenuType, Record<string, DayMenu>> = {
   },
 };
 
-const menuTabs: { key: MenuType; label: string; emoji: string; color: string; bg: string; tag?: string }[] = [
-  { key: "tradicional",  label: "Tradicional",  emoji: "🍽️", color: "#c8006a", bg: "#fde8f3" },
-  { key: "vegetariano",  label: "Vegetariano",  emoji: "🥗", color: "#00897b", bg: "#e0f5f3", tag: "🌱 Vegetariano" },
-  { key: "sintagg",      label: "Sin TACC",     emoji: "🌾", color: "#c8006a", bg: "#fde8f3", tag: "🌾 Apto Celíacos" },
+const menuTabs: { key: MenuType; label: string; icon: typeof UtensilsCrossed; color: string; bg: string; tag?: string }[] = [
+  { key: "tradicional",  label: "Tradicional",  icon: UtensilsCrossed, color: "#c8006a", bg: "#fde8f3" },
+  { key: "vegetariano",  label: "Vegetariano",  icon: Leaf, color: "#00897b", bg: "#e0f5f3", tag: "Vegetariano" },
+  { key: "sintagg",      label: "Sin TACC",     icon: WheatOff, color: "#b68806", bg: "#fff5c8", tag: "Apto Celíacos" },
 ];
 
 const turnosAlmuerzo = ["11:30 – 12:15", "12:15 – 13:00", "13:00 – 13:45", "13:45 – 14:15"];
@@ -53,17 +53,18 @@ export function MenuScreen() {
   const plato   = shift === "almuerzo" ? current.almuerzo : current.cena;
 
   return (
-    <div className="flex-1 overflow-y-auto bg-white pb-24">
+    <div className="flex-1 overflow-y-auto bg-white pb-4 sm:pb-6">
+      <div className="flex w-full flex-col">
 
       {/* Header */}
-      <div className="px-5 pt-8 pb-4" style={{ background: `linear-gradient(to bottom, ${cfg.color}12, transparent)` }}>
-        <h2 className="text-[#1a0a14]" style={{ fontFamily: "'Playfair Display', serif" }}>Menú semanal</h2>
+      <div className="px-4 pt-8 pb-4 sm:px-5 lg:px-6" style={{ background: `linear-gradient(to bottom, ${cfg.color}12, transparent)` }}>
+        <h2 className="text-[#1a0a14]" style={{ fontFamily: "'Open Sans', sans-serif" }}>Menú semanal</h2>
         <p className="text-[#8a5a78] text-xs mt-0.5">Lunes a Viernes · $2.800 por comida</p>
       </div>
 
       {/* Tipo de menú */}
-      <div className="px-5 mb-4">
-        <div className="flex bg-[#f5e0ef] rounded-2xl p-1 gap-1">
+      <div className="px-4 mb-4 sm:px-5 lg:px-6">
+        <div className="flex flex-wrap bg-[#f5e0ef] rounded-2xl p-1 gap-1 sm:flex-nowrap">
           {menuTabs.map(t => (
             <button
               key={t.key}
@@ -72,7 +73,7 @@ export function MenuScreen() {
                 menuType === t.key ? "bg-white shadow text-[#1a0a14]" : "text-[#8a5a78]"
               }`}
             >
-              <span className="text-base">{t.emoji}</span>
+              <t.icon size={14} />
               <span className="text-xs">{t.label}</span>
             </button>
           ))}
@@ -136,7 +137,7 @@ export function MenuScreen() {
       </div>
 
       {/* Días */}
-      <div className="px-5 mb-4">
+      <div className="px-4 mb-4 sm:px-5 lg:px-6">
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
           {DAYS.map(day => (
             <button
@@ -156,7 +157,7 @@ export function MenuScreen() {
       </div>
 
       {/* Plato */}
-      <div className="px-5">
+      <div className="px-4 sm:px-5 lg:px-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={`${menuType}-${selectedDay}-${shift}`}
@@ -176,7 +177,7 @@ export function MenuScreen() {
                 </span>
               </div>
               <p className="text-xs uppercase tracking-widest opacity-60 mb-2">Plato</p>
-              <p className="text-lg font-semibold leading-snug" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <p className="text-lg font-semibold leading-snug" style={{ fontFamily: "'Open Sans', sans-serif" }}>
                 {plato}
               </p>
               <div className="mt-4 pt-3 border-t border-white/20 flex items-center justify-between">
@@ -202,7 +203,7 @@ export function MenuScreen() {
 
         {/* Resumen semanal */}
         <div className="mt-4">
-          <h3 className="text-[#1a0a14] mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h3 className="text-[#1a0a14] mb-3" style={{ fontFamily: "'Open Sans', sans-serif" }}>
             Toda la semana
           </h3>
           <div className="flex flex-col gap-2 pb-4">
@@ -232,5 +233,6 @@ export function MenuScreen() {
         </div>
       </div>
     </div>
+  </div>
   );
 }

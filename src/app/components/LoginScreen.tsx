@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Eye, EyeOff, Mail, Lock, User, ArrowLeft } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, ArrowLeft, MailCheck } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import logoImg from "../logo";
 
@@ -27,26 +27,26 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
   const inputClass = "w-full px-4 py-3 rounded-xl border border-[#c8006a]/20 bg-white text-[#1a0a14] placeholder-[#8a5a78] focus:outline-none focus:ring-2 focus:ring-[#c8006a] transition";
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#c8006a] to-[#7a003f] flex flex-col items-center justify-center px-6">
+    <div className="min-h-screen bg-gradient-to-b from-[#c8006a] to-[#7a003f] flex flex-col items-center justify-center px-4 sm:px-6">
 
       <motion.div initial={{ opacity: 0, y: -24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center mb-8">
         <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mx-auto mb-4 shadow-xl overflow-hidden">
           <ImageWithFallback src={logoImg} alt="Logo Comedor UNLP" className="w-full h-full object-contain p-2" />
         </div>
-        <h1 className="text-white text-2xl font-semibold" style={{ fontFamily: "'Playfair Display', serif" }}>
+        <h1 className="text-white text-2xl font-semibold" style={{ fontFamily: "'Open Sans', sans-serif" }}>
           Comedor UNLP
         </h1>
         <p className="text-white/60 text-sm mt-1">Universidad Nacional de La Plata</p>
       </motion.div>
 
-      <motion.div key={mode} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="w-full max-w-sm bg-white rounded-2xl shadow-2xl p-6">
+      <motion.div key={mode} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="w-full max-w-sm bg-white rounded-2xl shadow-2xl p-5 sm:p-6">
         {mode !== "login" && (
           <button onClick={() => { setMode("login"); setError(""); setRecoverSent(false); }} className="flex items-center gap-1 text-[#c8006a] mb-4 hover:opacity-70 transition">
             <ArrowLeft size={16} /><span className="text-sm">Volver</span>
           </button>
         )}
 
-        <h2 className="text-[#c8006a] mb-5" style={{ fontFamily: "'Playfair Display', serif" }}>
+        <h2 className="text-[#c8006a] mb-5" style={{ fontFamily: "'Open Sans', sans-serif" }}>
           {mode === "login" && "Iniciar sesión"}
           {mode === "register" && "Crear cuenta"}
           {mode === "recover" && "Recuperar contraseña"}
@@ -54,7 +54,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
 
         {mode === "recover" && recoverSent ? (
           <div className="text-center py-4">
-            <div className="text-4xl mb-3">📧</div>
+            <div className="mb-3 flex justify-center text-[#c8006a]"><MailCheck size={32} /></div>
             <p className="text-[#c8006a] font-medium">¡Correo enviado!</p>
             <p className="text-[#8a5a78] text-sm mt-1">Revisá tu bandeja de entrada para restablecer tu contraseña.</p>
           </div>
