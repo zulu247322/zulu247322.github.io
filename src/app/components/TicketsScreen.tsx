@@ -158,13 +158,20 @@ export function TicketsScreen() {
             <div className="bg-[#c8006a] border border-[#c8006a]/80 rounded-2xl p-4 shadow-xl flex items-center gap-3">
               <div className="flex-1">
                 <p className="text-white font-medium">{cart.length} ticket{cart.length > 1 ? "s" : ""} seleccionado{cart.length > 1 ? "s" : ""}</p>
-                <p className="text-white text-xs">Tap en "Seleccionar método de pago" para continuar</p>
+                <p className="text-[#c2b4bb] text-xs">Elegí cómo querés pagar</p>
               </div>
               <button
                 onClick={() => setShowQR(true)}
-                className="bg-white text-[#6b1a1a] px-4 py-2 rounded-xl font-medium text-sm hover:bg-[#f5e8e8] transition"
+                className="flex items-center justify-center gap-2 bg-white text-[#c8006a] px-4 py-2.5 rounded-xl font-semibold text-sm shadow-sm hover:bg-[#fdf0f5] transition"
               >
-                Seleccionar método de pago
+                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#fde8f3]">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-3.5 w-3.5">
+                    <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9Z" />
+                    <path d="M3 10h18" />
+                    <path d="M16 14h2" />
+                  </svg>
+                </div>
+                <span>Pagar</span>
               </button>
             </div>
           </motion.div>
@@ -220,15 +227,29 @@ export function TicketsScreen() {
               <div className="flex flex-col gap-3 mb-5">
                 <button
                   onClick={handlePurchase}
-                  className="w-full bg-[#ffce00] text-[#1f1f1f] py-3.5 rounded-xl font-medium hover:bg-[#ffd83f] transition active:scale-95"
+                  className="w-full max-w-[340px] mx-auto bg-[#ffce00] text-[#1f1f1f] py-4.5 rounded-2xl font-semibold hover:bg-[#ffd83f] transition active:scale-95 flex items-center justify-center gap-3 shadow-sm"
                 >
-                  Pagar con Mercado Pago
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/80 p-0.5 shrink-0">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyDBsB5eAAOOOFK3QidPWG-wC4tUpbF0NhkpXcXFKb5w&s=10"
+                      alt="Mercado Pago"
+                      className="h-full w-full rounded-full object-contain"
+                    />
+                  </div>
+                  <span className="text-center">Pagar con Mercado Pago</span>
                 </button>
                 <button
                   onClick={handlePurchase}
-                  className="w-full bg-[#3a8dff] text-white py-3.5 rounded-xl font-medium hover:bg-[#5ea0ff] transition active:scale-95"
+                  className="w-full max-w-[340px] mx-auto bg-[#3a8dff] text-white py-4.5 rounded-2xl font-semibold hover:bg-[#5ea0ff] transition active:scale-95 flex items-center justify-center gap-3 shadow-sm"
                 >
-                  Pagar con Cuenta DNI
+                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/80 p-0.5 shrink-0">
+                    <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOwHccFoedDuaBG-GCaLcUMgHi0tA1KE85Fk3Hstzfqg&s"
+                      alt="Cuenta DNI"
+                      className="h-full w-full rounded-full object-contain"
+                    />
+                  </div>
+                  <span className="text-center">Pagar con Cuenta DNI</span>
                 </button>
               </div>
 
