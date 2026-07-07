@@ -43,7 +43,7 @@ export default function App() {
         <div className="flex flex-wrap items-center justify-end gap-2">
           <div className="bg-[#fdf0f0] rounded-xl px-2 py-1 flex items-center gap-1.5">
             <ImageWithFallback src="/logo.jpg" alt="Logo de la UNLP" className="w-5 h-5 object-contain" />
-            <span className="text-[#6b1a1a] text-xs font-medium">PRUEBA VITE</span>
+            <span className="text-[#6b1a1a] text-xs font-medium">Comedor UNLP</span>
           </div>
           <button
             onClick={handleLogout}
