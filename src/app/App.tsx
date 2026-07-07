@@ -8,7 +8,6 @@ import { MapaScreen } from "./components/MapaScreen";
 import { BottomNav, TabKey } from "./components/BottomNav";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import { LogOut } from "lucide-react";
-import logoImg from "./logo";
 
 interface User {
   name: string;
