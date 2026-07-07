@@ -31,7 +31,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
 
       <motion.div initial={{ opacity: 0, y: -24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center mb-8">
         <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mx-auto mb-4 shadow-xl overflow-hidden">
-          <ImageWithFallback src={logoImg} alt="Logo Comedor UNLP" className="w-full h-full object-contain p-2" />
+          <ImageWithFallback src={logoImg} alt="Logo del comedor de la UNLP" className="w-full h-full object-contain p-2" />
         </div>
         <h1 className="text-white text-2xl font-semibold" style={{ fontFamily: "'Open Sans', sans-serif" }}>
           Comedor UNLP
@@ -113,7 +113,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
                 <div className="border-t border-[#c8006a]/10 pt-3">
                   <p className="text-center text-sm text-[#8a5a78]">
                     ¿No tenés cuenta?{" "}
-                    <button onClick={() => { setMode("register"); setError(""); }} className="text-[#c8006a] font-medium hover:underline">Registrate</button>
+                    <button onClick={() => { setMode("register"); setError(""); }} className="text-[#c8006a] font-medium hover:underline">Regístrate</button>
                   </p>
                 </div>
               </>

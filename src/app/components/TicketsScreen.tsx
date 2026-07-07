@@ -55,7 +55,7 @@ export function TicketsScreen() {
   return (
     <div className="flex-1 overflow-y-auto bg-white pb-4 sm:pb-6">
       <div className="flex w-full flex-col">
-      {/* Header */}
+      {/* Encabezado */}
       <div className="px-4 pt-8 pb-5 sm:px-5 lg:px-6 bg-gradient-to-b from-[#c8006a]/15 to-transparent">
         <div className="flex items-center gap-3">
           <Ticket size={26} color="#c8006a" />
@@ -64,7 +64,7 @@ export function TicketsScreen() {
         <p className="text-[#8a5a5a] text-sm mt-1">Semana del 9 al 13 de junio</p>
       </div>
 
-      {/* Success toast */}
+      {/* Notificación de éxito */}
       <AnimatePresence>
         {purchased && (
           <motion.div
@@ -79,7 +79,7 @@ export function TicketsScreen() {
         )}
       </AnimatePresence>
 
-      {/* My tickets */}
+      {/* Mis tickets */}
       <div className="px-4 mb-6 sm:px-5 lg:px-6">
         <h3 className="text-[#c8006a] mb-3" style={{ fontFamily: "'Open Sans', sans-serif" }}>Tickets disponibles</h3>
         {myTickets.length === 0 ? (
@@ -105,7 +105,7 @@ export function TicketsScreen() {
         )}
       </div>
 
-      {/* Buy tickets section */}
+      {/* Sección para comprar tickets */}
       <div className="px-4 sm:px-5 lg:px-6">
         <h3 className="text-[#6b1a1a] mb-3" style={{ fontFamily: "'Open Sans', sans-serif" }}>Comprar tickets</h3>
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -146,7 +146,7 @@ export function TicketsScreen() {
         </div>
       </div>
 
-      {/* Cart bar */}
+      {/* Barra de carrito */}
       <AnimatePresence>
         {cart.length > 0 && (
           <motion.div
@@ -178,7 +178,7 @@ export function TicketsScreen() {
         )}
       </AnimatePresence>
 
-      {/* Payment Modal */}
+      {/* Modal de pago */}
       <AnimatePresence>
         {showQR && (
           <motion.div

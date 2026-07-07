@@ -56,7 +56,7 @@ export function MenuScreen() {
     <div className="flex-1 overflow-y-auto bg-white pb-4 sm:pb-6">
       <div className="flex w-full flex-col">
 
-      {/* Header */}
+      {/* Encabezado */}
       <div className="px-4 pt-8 pb-4 sm:px-5 lg:px-6" style={{ background: `linear-gradient(to bottom, ${cfg.color}12, transparent)` }}>
         <h2 className="text-[#1a0a14]" style={{ fontFamily: "'Open Sans', sans-serif" }}>Menú semanal</h2>
         <p className="text-[#8a5a78] text-xs mt-0.5">Lunes a Viernes · $2.800 por comida</p>
@@ -80,7 +80,7 @@ export function MenuScreen() {
         </div>
       </div>
 
-      {/* Turno toggle */}
+      {/* Selector de turno */}
       <div className="px-5 mb-4">
         <div className="flex bg-[#f0f0f0] rounded-xl p-1">
           <button
@@ -101,7 +101,7 @@ export function MenuScreen() {
           </button>
         </div>
 
-        {/* Info del turno */}
+        {/* Información del turno */}
         {shift === "almuerzo" ? (
           <div className="mt-2">
             <button

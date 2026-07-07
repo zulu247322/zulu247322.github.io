@@ -19,7 +19,7 @@ export function InicioScreen({ userName, onNavigate }: InicioScreenProps) {
     <div className="flex-1 overflow-y-auto bg-white pb-4 sm:pb-6">
       <div className="flex w-full flex-col">
 
-      {/* Hero */}
+      {/* Portada */}
       <div className="relative bg-gradient-to-b from-[#c8006a] to-[#9a0052] px-4 pt-10 pb-14 sm:px-6 sm:pt-12 sm:pb-16 lg:px-8">
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
           <p className="text-white/60 text-sm">Bienvenido/a,</p>
@@ -34,7 +34,7 @@ export function InicioScreen({ userName, onNavigate }: InicioScreenProps) {
         </div>
       </div>
 
-      {/* About card */}
+      {/* Tarjeta informativa */}
       <div className="px-4 sm:px-5 lg:px-6 -mt-4">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -44,7 +44,7 @@ export function InicioScreen({ userName, onNavigate }: InicioScreenProps) {
         >
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full bg-white border border-[#c8006a]/15 flex items-center justify-center overflow-hidden shadow-sm">
-              <ImageWithFallback src={logoImg} alt="Logo Comedor UNLP" className="w-full h-full object-contain p-1" />
+              <ImageWithFallback src={logoImg} alt="Logo del comedor de la UNLP" className="w-full h-full object-contain p-1" />
             </div>
             <h2 className="text-[#c8006a]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
               Comedor Universitario UNLP

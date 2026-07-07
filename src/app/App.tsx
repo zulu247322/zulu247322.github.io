@@ -30,7 +30,7 @@ export default function App() {
   return (
     <div className="min-h-screen w-full bg-[#f8f5f6]">
       <div className="flex flex-col h-screen w-full mx-auto bg-white overflow-hidden relative lg:max-w-none lg:rounded-none lg:shadow-none lg:border-0">
-      {/* Top bar */}
+      {/* Barra superior */}
       <div className="shrink-0 flex flex-wrap items-center justify-between gap-3 px-4 sm:px-5 lg:px-6 pt-4 pb-3 bg-white border-b border-[#6b1a1a]/10">
         <div className="flex items-center gap-2 min-w-0">
           <div className="w-7 h-7 rounded-full bg-[#6b1a1a] flex items-center justify-center">
@@ -43,7 +43,7 @@ export default function App() {
         </div>
         <div className="flex flex-wrap items-center justify-end gap-2">
           <div className="bg-[#fdf0f0] rounded-xl px-2 py-1 flex items-center gap-1.5">
-            <ImageWithFallback src={logoImg} alt="Logo UNLP" className="w-5 h-5 object-contain" />
+            <ImageWithFallback src={logoImg} alt="Logo de la UNLP" className="w-5 h-5 object-contain" />
             <span className="text-[#6b1a1a] text-xs font-medium">Comedor UNLP</span>
           </div>
           <button
@@ -55,7 +55,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* Screen content */}
+      {/* Contenido de la pantalla */}
       <div className="flex-1 overflow-hidden flex flex-col">
         <AnimatePresence mode="wait">
           <motion.div

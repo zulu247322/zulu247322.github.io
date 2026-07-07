@@ -78,7 +78,7 @@ export function MapaScreen() {
     <div className="flex-1 flex flex-col bg-white pb-4 sm:pb-6 overflow-hidden">
       <div className="flex w-full flex-col">
 
-      {/* Header */}
+      {/* Encabezado */}
       <div className="px-4 pt-8 pb-4 sm:px-5 lg:px-6 bg-gradient-to-b from-[#c8006a]/8 to-transparent shrink-0">
         <div className="flex items-center gap-3">
           <MapPin size={26} color="#c8006a" />
@@ -153,7 +153,7 @@ export function MapaScreen() {
         </div>
       </div>
 
-      {/* Drawer de detalle */}
+      {/* Panel de detalle */}
       <AnimatePresence>
         {selected && showDetails && (
           <motion.div
@@ -224,9 +224,7 @@ export function MapaScreen() {
                 ))}
               </div>
 
-              <button className="w-full flex items-center justify-center gap-2 bg-[#c8006a] text-white py-3 rounded-xl font-medium hover:bg-[#a8005a] transition">
-                <Navigation size={16} /> Cómo llegar
-              </button>
+
             </motion.div>
           </motion.div>
         )}
