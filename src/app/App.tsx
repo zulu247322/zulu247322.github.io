@@ -11,7 +11,6 @@ import { LogOut } from "lucide-react";
 
 interface User {
   name: string;
-  email: string;
 }
 
 export default function App() {

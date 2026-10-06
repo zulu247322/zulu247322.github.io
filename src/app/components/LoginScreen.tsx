@@ -1,27 +1,28 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Eye, EyeOff, Mail, Lock, User, ArrowLeft, MailCheck } from "lucide-react";
+import { Eye, EyeOff, IdCard, Mail, Lock, User, ArrowLeft, MailCheck } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import logoImg from "../logo";
 
 type LoginMode = "login" | "register" | "recover";
 
 interface LoginScreenProps {
-  onLogin: (user: { name: string; email: string }) => void;
+  onLogin: (user: { name: string }) => void;
 }
 
 export function LoginScreen({ onLogin }: LoginScreenProps) {
   const [mode, setMode]               = useState<LoginMode>("login");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail]             = useState("");
+  const [loginDni, setLoginDni]       = useState("");
   const [password, setPassword]       = useState("");
   const [name, setName]               = useState("");
   const [dni, setDni]                 = useState("");
   const [recoverSent, setRecoverSent] = useState(false);
   const [error, setError]             = useState("");
 
-  const handleLogin    = () => { if (!email || !password) { setError("Completá todos los campos."); return; } onLogin({ name: email.split("@")[0], email }); };
-  const handleRegister = () => { if (!name || !email || !password || !dni) { setError("Completá todos los campos."); return; } onLogin({ name, email }); };
+  const handleLogin    = () => { if (!loginDni || !password) { setError("Completá todos los campos."); return; } onLogin({ name: "Estudiante" }); };
+  const handleRegister = () => { if (!name || !email || !password || !dni) { setError("Completá todos los campos."); return; } onLogin({ name }); };
   const handleRecover  = () => { if (!email) { setError("Ingresá tu correo electrónico."); return; } setRecoverSent(true); setError(""); };
 
   const inputClass = "w-full px-4 py-3 rounded-xl border border-[#c8006a]/20 bg-white text-[#1a0a14] placeholder-[#8a5a78] focus:outline-none focus:ring-2 focus:ring-[#c8006a] transition";
@@ -73,10 +74,25 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
               </>
             )}
 
-            <div className="relative">
-              <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8a5a78]" />
-              <input className={inputClass + " pl-9"} placeholder="Correo electrónico" value={email} onChange={e => { setEmail(e.target.value); setError(""); }} type="email" />
-            </div>
+            {mode === "login" ? (
+              <div className="relative">
+                <IdCard size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8a5a78]" aria-hidden="true" />
+                <input
+                  className={inputClass + " pl-9"}
+                  placeholder="Número de DNI (sin puntos)"
+                  value={loginDni}
+                  onChange={e => { setLoginDni(e.target.value.replace(/\D/g, "")); setError(""); }}
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="username"
+                />
+              </div>
+            ) : (
+              <div className="relative">
+                <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8a5a78]" />
+                <input className={inputClass + " pl-9"} placeholder="Correo electrónico" value={email} onChange={e => { setEmail(e.target.value); setError(""); }} type="email" />
+              </div>
+            )}
 
             {mode !== "recover" && (
               <div className="relative">
