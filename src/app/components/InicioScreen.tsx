@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { UtensilsCrossed, Ticket, Map, Bell, SunMedium, MoonStar } from "lucide-react";
+import { UtensilsCrossed, Ticket, Map, Bell, ChevronDown, SunMedium, MoonStar } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import logoImg from "../logo";
 
@@ -69,17 +69,21 @@ export function InicioScreen({ userName, onNavigate }: InicioScreenProps) {
         </motion.div>
       </div>
 
-      {/* Aviso */}
+      {/* Avisos */}
       <div className="px-4 sm:px-5 lg:px-6 mt-4">
-        <div className="bg-[#fff8e8] border border-[#f2c14e]/70 rounded-xl px-4 py-3 flex gap-3 items-start shadow-sm">
-          <div className="mt-0.5 rounded-full bg-[#f2c14e]/20 p-2 text-[#b47b00]">
-            <Bell size={16} strokeWidth={2.2} />
+        <details className="group rounded-xl border border-[#f2c14e]/70 bg-[#fff8e8] px-4 py-3 shadow-sm">
+          <summary className="flex cursor-pointer list-none items-center gap-3 rounded-md text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b47b00] [&::-webkit-details-marker]:hidden">
+            <span className="mt-0.5 rounded-full bg-[#f2c14e]/20 p-2 text-[#b47b00]">
+              <Bell size={16} strokeWidth={2.2} aria-hidden="true" />
+            </span>
+            <span className="flex-1 text-sm font-medium text-yellow-800">Avisos</span>
+            <ChevronDown size={16} className="shrink-0 text-[#b47b00] transition-transform group-open:rotate-180" aria-hidden="true" />
+          </summary>
+          <div className="ml-11 mt-3 space-y-3 border-t border-[#f2c14e]/60 pt-3 text-xs leading-relaxed text-yellow-700">
+            <p>De lunes a viernes 40% de descuento pagando con Cuenta DNI mediante QR.</p>
+            <p>Debido al paro universitario este miércoles 7 de octubre no funcionará ninguna de las sedes del Comedor Universitario. (El ticket adquirido podrá utilizarse para la próxima compra).</p>
           </div>
-          <div>
-            <p className="text-yellow-800 text-sm font-medium">Aviso importante</p>
-            <p className="text-yellow-700 text-xs mt-0.5">De lunes a viernes 40% de descuento pagando con Cuenta DNI mediante QR.</p>
-          </div>
-        </div>
+        </details>
       </div>
 
       {/* Acceso rápido */}
