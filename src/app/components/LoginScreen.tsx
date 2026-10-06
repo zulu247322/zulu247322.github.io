@@ -69,7 +69,15 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
                 </div>
                 <div className="relative">
                   <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8a5a78]" />
-                  <input className={inputClass + " pl-9"} placeholder="DNI" value={dni} onChange={e => setDni(e.target.value)} type="number" />
+                  <input
+                    className={inputClass + " pl-9"}
+                    placeholder="Número de DNI (sin puntos)"
+                    value={dni}
+                    onChange={e => setDni(e.target.value.replace(/\D/g, ""))}
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                  />
                 </div>
               </>
             )}
