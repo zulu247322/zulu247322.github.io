@@ -1,24 +1,22 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus, Minus, X, Ticket, CheckCircle, SunMedium, MoonStar } from "lucide-react";
 
 const DAYS = ["Lunes 9", "Martes 10", "Miércoles 11", "Jueves 12", "Viernes 13"];
 
-type Shift = "mediodia" | "noche";
+export type Shift = "mediodia" | "noche";
 
-interface TicketItem {
+export interface TicketItem {
   day: string;
   shift: Shift;
 }
 
-const initialTickets: TicketItem[] = [
-  { day: "Lunes 9", shift: "mediodia" },
-  { day: "Martes 10", shift: "noche" },
-  { day: "Miércoles 11", shift: "mediodia" },
-];
+interface TicketsScreenProps {
+  myTickets: TicketItem[];
+  setMyTickets: Dispatch<SetStateAction<TicketItem[]>>;
+}
 
-export function TicketsScreen() {
-  const [myTickets, setMyTickets] = useState<TicketItem[]>(initialTickets);
+export function TicketsScreen({ myTickets, setMyTickets }: TicketsScreenProps) {
   const [cart, setCart] = useState<TicketItem[]>([]);
   const [showQR, setShowQR] = useState(false);
   const [purchased, setPurchased] = useState(false);
@@ -81,7 +79,7 @@ export function TicketsScreen() {
 
       {/* Mis tickets */}
       <div className="px-4 mb-6 sm:px-5 lg:px-6">
-        <h3 className="text-[#c8006a] mb-3" style={{ fontFamily: "'Open Sans', sans-serif" }}>Tickets disponibles</h3>
+        <h3 className="text-[#c8006a] mb-3" style={{ fontFamily: "'Open Sans', sans-serif" }}>Mis tickets</h3>
         {myTickets.length === 0 ? (
           <div className="text-center py-8 text-[#8a5a5a]">
             <Ticket size={32} className="mx-auto mb-2 opacity-30" />

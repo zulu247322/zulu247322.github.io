@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { LoginScreen } from "./components/LoginScreen";
 import { InicioScreen } from "./components/InicioScreen";
 import { MenuScreen } from "./components/MenuScreen";
-import { TicketsScreen } from "./components/TicketsScreen";
+import { TicketsScreen, type TicketItem } from "./components/TicketsScreen";
 import { MapaScreen } from "./components/MapaScreen";
 import { BottomNav, TabKey } from "./components/BottomNav";
 import { ImageWithFallback } from "./components/figma/ImageWithFallback";
@@ -17,9 +17,10 @@ interface User {
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const [activeTab, setActiveTab] = useState<TabKey>("inicio");
+  const [myTickets, setMyTickets] = useState<TicketItem[]>([]);
 
   const handleLogin = (u: User) => setUser(u);
-  const handleLogout = () => { setUser(null); setActiveTab("inicio"); };
+  const handleLogout = () => { setUser(null); setActiveTab("inicio"); setMyTickets([]); };
   const handleNavigate = (tab: string) => setActiveTab(tab as TabKey);
 
   if (!user) {
@@ -69,7 +70,7 @@ export default function App() {
             {activeTab === "menu" && <MenuScreen type="regular" />}
             {activeTab === "vegano" && <MenuScreen type="vegano" />}
             {activeTab === "sintagg" && <MenuScreen type="sintagg" />}
-            {activeTab === "tickets" && <TicketsScreen />}
+            {activeTab === "tickets" && <TicketsScreen myTickets={myTickets} setMyTickets={setMyTickets} />}
             {activeTab === "mapa" && <MapaScreen />}
           </motion.div>
         </AnimatePresence>

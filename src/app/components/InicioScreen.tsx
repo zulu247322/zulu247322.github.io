@@ -77,7 +77,7 @@ export function InicioScreen({ userName, onNavigate }: InicioScreenProps) {
           </div>
           <div>
             <p className="text-yellow-800 text-sm font-medium">Aviso importante</p>
-            <p className="text-yellow-700 text-xs mt-0.5">El comedor estará cerrado el jueves 19 de junio por feriado nacional. Planificá tu semana con anticipación.</p>
+            <p className="text-yellow-700 text-xs mt-0.5">De lunes a viernes 40% de descuento pagando con Cuenta DNI mediante QR.</p>
           </div>
         </div>
       </div>
