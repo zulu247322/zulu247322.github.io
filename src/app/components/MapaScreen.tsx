@@ -57,7 +57,7 @@ const sedes: Sede[] = [
 ];
 
 function getMoovitDirectionsUrl(sede: Sede) {
-  const url = new URL("https://moovit.com/");
+  const url = new URL("https://moovitapp.com/");
   url.searchParams.set("to", `${sede.nombre}, ${sede.direccion}, La Plata`);
   url.searchParams.set("tll", `${sede.lat}_${sede.lon}`);
   url.searchParams.set("metroId", "1602");
