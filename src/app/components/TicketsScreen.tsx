@@ -2,7 +2,7 @@ import { useState, type Dispatch, type SetStateAction } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus, Minus, X, Ticket, CheckCircle, SunMedium, MoonStar } from "lucide-react";
 
-const DAYS = ["Lunes 9", "Martes 10", "Miércoles 11", "Jueves 12", "Viernes 13"];
+const DAYS = ["Lunes 5", "Martes 6", "Miércoles 7", "Jueves 8", "Viernes 9"];
 
 export type Shift = "mediodia" | "noche";
 
@@ -59,7 +59,7 @@ export function TicketsScreen({ myTickets, setMyTickets }: TicketsScreenProps) {
           <Ticket size={26} color="#c8006a" />
           <h2 className="text-[#c8006a]" style={{ fontFamily: "'Open Sans', sans-serif" }}>Mis Tickets</h2>
         </div>
-        <p className="text-[#8a5a5a] text-sm mt-1">Semana del 9 al 13 de junio</p>
+        <p className="text-[#8a5a5a] text-sm mt-1">Semana del 5 al 9 de octubre</p>
       </div>
 
       {/* Notificación de éxito */}
@@ -109,7 +109,7 @@ export function TicketsScreen({ myTickets, setMyTickets }: TicketsScreenProps) {
         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           {DAYS.map(day => (
             <div key={day} className="bg-white border border-[#c8006a]/15 rounded-2xl p-4 h-full">
-              <p className="font-medium text-[#1a0a0a] mb-3">{day} de junio</p>
+              <p className="font-medium text-[#1a0a0a] mb-3">{day} de octubre</p>
               <div className="grid grid-cols-2 gap-2">
                 {(["mediodia", "noche"] as Shift[]).map(shift => {
                   const isOwned = owned(day, shift);

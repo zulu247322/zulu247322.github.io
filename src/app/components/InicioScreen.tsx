@@ -47,7 +47,7 @@ export function InicioScreen({ userName, onNavigate }: InicioScreenProps) {
               <ImageWithFallback src={logoImg} alt="Logo del comedor de la UNLP" className="w-full h-full object-contain p-1" />
             </div>
             <h2 className="text-[#c8006a]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
-              Comedor Universitario UNLP
+              Comedor Universitario
             </h2>
           </div>
           <p className="text-[#3a1a2a] text-sm leading-relaxed">
