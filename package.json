@@ -7,7 +7,7 @@
     "build": "vite build",
     "dev": "vite",
     "predeploy": "pnpm build",
-    "deploy": "gh-pages -d docs"
+    "deploy": "node scripts/deploy-pages.mjs"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

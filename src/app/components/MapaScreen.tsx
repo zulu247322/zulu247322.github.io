@@ -75,8 +75,8 @@ export function MapaScreen() {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <div className="flex-1 flex flex-col bg-white pb-4 sm:pb-6 overflow-hidden">
-      <div className="flex w-full flex-col">
+    <div className="flex-1 min-h-0 flex flex-col bg-white pb-4 sm:pb-6 overflow-y-auto overscroll-y-contain lg:overflow-hidden">
+      <div className="flex w-full flex-col flex-1 lg:min-h-0">
 
       {/* Encabezado */}
       <div className="px-4 pt-8 pb-4 sm:px-5 lg:px-6 bg-gradient-to-b from-[#c8006a]/8 to-transparent shrink-0">
@@ -89,10 +89,10 @@ export function MapaScreen() {
         </div>
       </div>
 
-      <div className="px-4 sm:px-5 lg:px-6">
-        <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+      <div className="px-4 sm:px-5 lg:px-6 flex flex-1 flex-col lg:min-h-0">
+        <div className="grid gap-4 flex-1 lg:min-h-0 lg:grid-cols-[1.15fr_0.85fr]">
           {/* Mapa interactivo tipo Google Maps */}
-          <div className="mb-4 shrink-0 overflow-hidden rounded-[28px] border border-[#c8006a]/15 h-[260px] shadow-[0_18px_45px_rgba(200,0,106,0.08)] sm:h-[300px] lg:h-[400px]">
+          <div className="mb-4 lg:mb-0 shrink-0 overflow-hidden rounded-[28px] border border-[#c8006a]/15 h-[260px] shadow-[0_18px_45px_rgba(200,0,106,0.08)] sm:h-[300px] lg:h-[400px]">
             <div className="relative h-full w-full bg-[#eef5f7]">
               <iframe
                 key={selected?.id ?? "default"}
@@ -117,7 +117,7 @@ export function MapaScreen() {
           </div>
 
           {/* Lista de sedes */}
-          <div className="flex-1 overflow-y-auto pb-2 lg:pb-0">
+          <div className="pb-2 lg:h-[400px] lg:overflow-y-auto">
         <div className="flex flex-col gap-2">
           {sedes.map(sede => (
             <motion.button
