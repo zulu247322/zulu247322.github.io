@@ -79,10 +79,10 @@ export function InicioScreen({ userName, onNavigate }: InicioScreenProps) {
             <span className="flex-1 text-sm font-medium text-yellow-800">Avisos</span>
             <ChevronDown size={16} className="shrink-0 text-[#b47b00] transition-transform group-open:rotate-180" aria-hidden="true" />
           </summary>
-          <div className="ml-11 mt-3 space-y-3 border-t border-[#f2c14e]/60 pt-3 text-xs leading-relaxed text-yellow-700">
-            <p>De lunes a viernes 40% de descuento pagando con Cuenta DNI mediante QR.</p>
-            <p>Debido al paro universitario este miércoles 7 de octubre no funcionará ninguna de las sedes del Comedor Universitario. (El ticket adquirido podrá utilizarse para la próxima compra).</p>
-          </div>
+          <ul className="ml-11 mt-3 list-disc space-y-3 border-t border-[#f2c14e]/60 pt-3 pl-4 text-xs leading-relaxed text-yellow-700 marker:text-[#b47b00]">
+            <li>De lunes a viernes 40% de descuento pagando con Cuenta DNI mediante QR.</li>
+            <li>Debido al paro universitario este miércoles 7 de octubre no funcionará ninguna de las sedes del Comedor Universitario. (El ticket adquirido podrá utilizarse para la próxima compra).</li>
+          </ul>
         </details>
       </div>
 
