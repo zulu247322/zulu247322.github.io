@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { MapPin, Bus, X, Clock, Navigation, SunMedium, MoonStar } from "lucide-react";
+import { MapPin, Bus, X, Clock, ExternalLink, ChevronRight, SunMedium, MoonStar } from "lucide-react";
 
 interface Sede {
   id: number;
@@ -9,7 +9,6 @@ interface Sede {
   lat: number;
   lon: number;
   horario: string;
-  transporte: { tipo: string; lineas: string[] }[];
   coords: { x: number; y: number };
   color: string;
 }
@@ -22,53 +21,49 @@ const sedes: Sede[] = [
     lat: -34.906884,
     lon: -57.941685,
     horario: "Almuerzo: 11:30–14:15 / Cena (vianda): 17:00–19:00",
-    transporte: [
-      { tipo: "Colectivo", lineas: ["520", "275", "506"] },
-    ],
     coords: { x: 55, y: 58 },
     color: "#c8006a",
   },
   {
     id: 2,
     nombre: "Reforma Universitaria",
-    direccion: "Calle 120 entre 61 y 62 N° 1439",
+    direccion: "Boulevard 120 N.º 1439 entre 61 y 62",
     lat: -34.9094484,
     lon: -57.9256302,
     horario: "Almuerzo: 11:30–14:15 / Cena (vianda): 17:00–19:00",
-    transporte: [
-      { tipo: "Colectivo", lineas: ["215", "520"] },
-    ],
     coords: { x: 30, y: 42 },
     color: "#00897b",
   },
   {
     id: 3,
     nombre: "ATULP",
-    direccion: "Avenida 44 N° 733 entre 9 y 10",
-    lat: -34.9130185,
-    lon: -57.9582844,
+    direccion: "Avenida 44 N.º 733 entre 9 y 10",
+    lat: -34.9130919,
+    lon: -57.9581181,
     horario: "Almuerzo: 11:30–14:15 / Cena (vianda): 17:00–19:00",
-    transporte: [
-      { tipo: "Colectivo", lineas: ["307", "360", "202"] },
-      { tipo: "Tren", lineas: ["Roca – Est. La Plata"] },
-    ],
     coords: { x: 48, y: 25 },
     color: "#c8006a",
   },
   {
     id: 4,
     nombre: "Club Everton",
-    direccion: "Calle 14 entre 63 y 64",
+    direccion: "Calle 14 entre 63 y 64, salón planta baja",
     lat: -34.9303891,
     lon: -57.9446519,
     horario: "Almuerzo: 11:30–14:15 / Cena (vianda): 17:00–19:00",
-    transporte: [
-      { tipo: "Colectivo", lineas: ["275", "214", "202"] },
-    ],
     coords: { x: 72, y: 35 },
     color: "#00897b",
   },
 ];
+
+function getMoovitDirectionsUrl(sede: Sede) {
+  const url = new URL("https://moovit.com/");
+  url.searchParams.set("to", `${sede.nombre}, ${sede.direccion}, La Plata`);
+  url.searchParams.set("tll", `${sede.lat}_${sede.lon}`);
+  url.searchParams.set("metroId", "1602");
+  url.searchParams.set("lang", "es-419");
+  return url.toString();
+}
 
 export function MapaScreen() {
   const [selected, setSelected] = useState<Sede | null>(null);
@@ -142,9 +137,8 @@ export function MapaScreen() {
                 <p className="text-sm font-medium text-[#1a0a14]">{sede.nombre}</p>
                 <p className="text-xs text-[#8a5a78] truncate">{sede.direccion}</p>
               </div>
-              <div className="shrink-0 flex items-center gap-1">
-                <Bus size={12} color="#8a5a78" />
-                <span className="text-xs text-[#8a5a78]">{sede.transporte.reduce((n, t) => n + t.lineas.length, 0)}</span>
+              <div className="shrink-0 flex items-center">
+                <ChevronRight size={16} color="#8a5a78" />
               </div>
             </motion.button>
           ))}
@@ -207,22 +201,16 @@ export function MapaScreen() {
                 </div>
               </div>
 
-              {/* Transporte */}
-              <p className="text-xs uppercase tracking-wide text-[#8a5a78] mb-2 flex items-center gap-1.5">
-                <Bus size={12} /> Transporte público
-              </p>
-              <div className="flex flex-col gap-3 mb-5">
-                {selected.transporte.map((t, i) => (
-                  <div key={i}>
-                    <p className="text-sm text-[#3a1a2a] font-medium mb-1.5">{t.tipo}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {t.lineas.map(linea => (
-                        <span key={linea} className="bg-[#c8006a] text-white text-xs px-2.5 py-1 rounded-full">{linea}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <a
+                href={getMoovitDirectionsUrl(selected)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-5 inline-flex w-full items-center gap-2 rounded-xl bg-[#c8006a] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#a8005a]"
+              >
+                <Bus size={16} aria-hidden="true" />
+                <span>Cómo llegar con Moovit</span>
+                <ExternalLink size={16} className="ml-auto" aria-hidden="true" />
+              </a>
 
 
             </motion.div>
